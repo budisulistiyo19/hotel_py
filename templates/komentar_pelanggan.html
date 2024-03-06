@@ -1,0 +1,89 @@
+{% extends "baseadmin.html" %}
+{% block title %}Komentar{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class="container">
+            <a
+                href=""
+                type="button"
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#komentaradd">Tambah Komentar</a>
+            {% include "komentaradd.html" %}
+        </div>
+
+        <div class="row">
+            <div class="col mt-5 text-center">
+                <h2>Data Komentar</h2>
+            </div>
+
+            <!-- pesan data berubah -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for
+                message in messages %}
+
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Keterangan :</strong>
+                        {{ message }}
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"></button>
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <!-- Akhir pesan data berubah -->
+
+            <div class="row">
+                <div class="col">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">komentar</th>
+                                <th scope="col">Tanggal</th>
+
+                                <th scope="col" style="text-align: center">Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in datapelanggan %}
+
+                                <tr>
+                                    <th scope="row">{{ loop.index }}</th>
+
+                                    <td>{{ row [2] }}</td>
+                                    <td>{{ row [3] }}</td>
+                                    <td>{{ row [4] }}</td>
+                                    <td style="text-align: center">
+                                        <a
+                                            href=""
+                                            type="button"
+                                            class="btn btn-outline-success"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#komentarupdate{{ row [0] }}">Update</a>
+                                        <a
+                                            href="{{ url_for('komentarhapus', id=row[0])}}"
+                                            type="button"
+                                            class="btn btn-outline-danger"
+                                            onclick="confirm('Anda yakin mengahpus data?');">Delete</a>
+                                    </td>
+
+                                </tr>
+
+                                {% include "komentarupdate.html" %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

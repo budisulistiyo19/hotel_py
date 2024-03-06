@@ -1,0 +1,69 @@
+<div
+    class="modal fade"
+    id="kamardetail{{ row [0]}}"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Kamar Detail</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>
+                    Kamar Id :
+                    {{ row [0] }}</h2>
+                <hr>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    Nama Kamar :
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    {{ row [1] }}
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 col-sm-6">
+                                        Harga :
+                                    </div>
+                                    <div class="col-4 col-sm-6">
+                                        {{ row [2] }}
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-8 col-sm-6">
+                                            Keterangan :
+                                        </div>
+                                        <div class="col-4 col-sm-6">
+                                            {{ row [3] }}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-8 col-sm-6">
+                                                Gambar :
+                                            </div>
+                                            <div class="col-4 col-sm-6">
+                                                {{ row [4] }}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

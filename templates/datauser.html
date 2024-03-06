@@ -1,0 +1,89 @@
+{% extends "baseadmin.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col mt-5 text-center">
+                <h2>Data User</h2>
+            </div>
+            <!-- pesan data berubah -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Keterangan :</strong>
+                        {{ message }}
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"></button>
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+            {% endwith %}
+            <!-- Akhir pesan data berubah -->
+
+            <div class="row">
+                <div class="col">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Level</th>
+
+                                <th scope="col" style="text-align:center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in datapengguna %}
+
+                                <tr>
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td>{{ row [1] }}</td>
+                                    <td>{{ row [2][25:50] }}</td>
+                                    <td>{{ row [3] }}</td>
+                                    <td>{{ row [4] }}</td>
+
+                                    <td style="text-align: center;">
+                                        <a
+                                            href=""
+                                            type="button"
+                                            class="btn btn-outline-secondary"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#userdetail{{ row [0]}}">Detail</a>
+                                        <a
+                                            href=""
+                                            type="button"
+                                            class="btn btn-outline-success"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#updateModaluser{{ row [0]}}">Update</a>
+                                        <a
+                                            href="{{ url_for('userhapus', id=row[0])}}"
+                                            type="button"
+                                            class="btn btn-outline-danger"
+                                            onclick="confirm('Anda yakin mengahpus data?');">Delete</a>
+                                    </td>
+
+                                </tr>
+
+                                {% include "datauserdetail.html" %}
+                                {% include "datauserupdate.html" %}
+
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

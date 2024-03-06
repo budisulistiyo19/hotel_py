@@ -1,0 +1,102 @@
+{% extends "baseadmin.html" %}
+{% block title %}Data Pelanggan{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col mt-5 text-center">
+                <h2>Data Booking</h2>
+            </div>
+            <!-- pesan data berubah -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Keterangan :</strong>
+                        {{ message }}
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"></button>
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+            {% endwith %}
+            <!-- Akhir pesan data berubah -->
+
+            <div class="row">
+                <div class="col">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Email`</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Tipe</th>
+                                <th scope="col">Checkout</th>
+                                <th scope="col">Jumlah</th>
+                                <th scope="col" style="text-align:center">Action</th>
+                                <th scope="col" style="text-align:center; color :red">Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in datapemesan %}
+
+                                <tr>
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td>{{ row [1] }}</td>
+                                    <td>{{ row [2] }}</td>
+                                    <td>{{ row [3] }}</td>
+                                    <td>{{ row [4] }}</td>
+
+                                    <td>{{ row [6] }}</td>
+                                    <td>{{ row [7] }}</td>
+                                    <td style="text-align: center;">
+                                        <a
+                                            href=""
+                                            type="button"
+                                            class="btn btn-outline-secondary"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#detailModal{{ row [0]}}">Detail</a>
+                                        <a
+                                            href=""
+                                            type="button"
+                                            class="btn btn-outline-success"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#updateModal{{ row [0]}}">Update</a>
+                                        <a
+                                            href="{{ url_for('customerhapus', id=row[0])}}"
+                                            type="button"
+                                            class="btn btn-outline-danger"
+                                            onclick="confirm('Anda yakin mengahpus data?');">Delete</a>
+                                    </td>
+                                    <td>
+                                        {% if (row[9] == 'Booking') : %}
+                                            <a href="" type="button" class="btn btn-success">{{ row [9] }}</a>
+                                        {% elif(row[9] == 'Leave') : %}
+                                            <a href="" type="button" class="btn btn-danger">{{ row [9] }}</a>
+                                        {% else : %}
+                                            <a href="" type="button" class="btn btn-warning">{{ row [9] }}</a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                                {% include "customerdetail.html" %}
+                                {% include "customerupdate.html" %}
+
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

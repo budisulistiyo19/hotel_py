@@ -1,0 +1,337 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+
+    <!-- menu home -->
+    <div class="container" id="home">
+        <div class="row">
+            <div class="col">
+                <div
+                    id="carouselExampleIndicators"
+                    class="carousel slide"
+                    data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button
+                            type="button"
+                            data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="0"
+                            class="active"
+                            aria-current="true"
+                            aria-label="Slide 1"></button>
+                        <button
+                            type="button"
+                            data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button
+                            type="button"
+                            data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img
+                                src="{{url_for('static', filename='img/image1.jpg')}}"
+                                class="d-block w-100"
+                                alt="..."
+                                height="600">
+                        </div>
+                        <div class="carousel-item">
+                            <img
+                                src="{{url_for('static', filename='img/image2.jpg')}}"
+                                class="d-block w-100"
+                                alt="..."
+                                height="600">
+                        </div>
+                        <div class="carousel-item">
+                            <img
+                                src="{{url_for('static', filename='img/image3.jpg')}}"
+                                class="d-block w-100"
+                                alt="..."
+                                height="600">
+                        </div>
+                    </div>
+                    <button
+                        class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                        class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end menu home -->
+    <!-- start tentang kami -->
+    <div class="container">
+        <div class="row">
+            <div class="col text-center mt-5">
+                <h3>
+                    Tentang kami</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-justify">
+                <p>
+                    Hotel Taman Sari Karanganyar banyak dipilih wisatawan. Salah satunya karena
+                    lokasinya sangat strategis. Kedua, Hotel Taman Sari Karanganyar memiliki gedung
+                    (convention hall). Biasanya disewakan untuk acara penting seperti resepsi nikah,
+                    HUT organisasi dan lainnya. Hotel aman Sari Karanganyar adalah bangunan dengan 4
+                    lantai dan memiliki 36 kamar hotel bagus. Kamarnya dibagi dalam beberapa tipe,
+                    dengan ukuran dan fasilitas yang berbeda. Jangan khawatir, Anda tetap bisa pesan
+                    kamar hotel murah dengan fasilitas lengkap.
+                </p>
+
+                <p>
+                    Jika sedang menginap di Hotel Taman Sari Karanganyar lalu kelaparan bagaimana?
+                    Mau pesan makanan di hotel? Bisa. Mau cari makan di area sekitar hotel juga ada.
+                    Nah, lebih baik Anda cicipi sajian di restoran Hotel Taman Sari Karanganyar
+                    dengan menu utama makanan asia. Sarapan di Hotel Taman Sari dengan menu atau
+                    sajian A la carte. Lalu malamnya juga makan di Hotel Taman Sari, dengan menu
+                    prasmanan
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <!-- end tentang kami -->
+
+    <!-- start kamar -->
+    <div class="container" id="kamar">
+        <div class="row">
+            <div class="col text-center">
+                <h2>Tipe kamar</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for row in datakamar %}
+                <!-- Kamar 1 -->
+                <div class="col-md">
+                    <div class="card">
+                        <img src="static/img/{{ row [4] }}" class="card-img-top" alt="..." height="300">
+                        <div class="card-header">
+                            {{ row [1] }}
+                            <span class="float-end">Rp.
+                                {{ row [2] }}</span>
+                        </div>
+
+                        <div class="card-body">
+
+                            <p class="card-text">
+                                <pre>
+                        {{ row [3] }}
+                    </pre>
+                            </p>
+
+                            <div class="d-grid gap-2">
+                                <a href="/login" class="btn btn-outline-info">Booking Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end kamar 1 -->
+            {% endfor %}
+        </div>
+
+    </div>
+    <!-- end kamar -->
+
+    <!-- Start Fasilitas -->
+    <div class="container">
+        <div class="row">
+            <div class="col text-center mb-3">
+                <h3 id="fasilitas">
+                    Fasilitas</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- start fasilitas 1 -->
+            <div class="col-md">
+                <div class="card">
+                    <img
+                        src="{{url_for('static', filename='img/fasilitas1.jpg')}}"
+                        class="card-img-top"
+                        alt="..."
+                        height="300">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Lobby
+                        </h4>
+                        <p class="card-text">Lobby yang nyaman untuk melayani kedatangan tamu</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End fasilitas 1 -->
+
+            <!-- start fasilitas 2 -->
+            <div class="col-md mb-3">
+                <div class="card">
+                    <img
+                        src="{{url_for('static', filename='img/fasilitas2.jpg')}}"
+                        class="card-img-top"
+                        alt="..."
+                        height="300">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Tempat Bermain Anak
+                        </h4>
+                        <p class="card-text">Tempat bermain anak yang nyaman dan lengkap membuat anak senang.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End fasilitas 2 -->
+
+            <!-- start fasilitas 3 -->
+            <div class="col-md mb-3">
+                <div class="card">
+                    <img
+                        src="{{url_for('static', filename='img/fasilitas3.jpg')}}"
+                        class="card-img-top"
+                        alt="..."
+                        height="300">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Kolam renang
+                        </h4>
+                        <p class="card-text">kolam renang dengan air yang bersih dan juga terdapat lounge yang nyaman.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End fasilitas 3 -->
+        </div>
+
+        <div class="row">
+            <!-- start fasilitas 1 -->
+            <div class="col-md">
+                <div class="card">
+                    <img
+                        src="{{url_for('static', filename='img/fasilitas4.jpg')}}"
+                        class="card-img-top"
+                        alt="..."
+                        height="300">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Ruang Rapat
+                        </h4>
+                        <p class="card-text">Ruang rapat dapat menampung ± 15 orang dan dilengkapi
+                            dengan AC Central, koneksi WiFi, LED TV, power supply, water dispenser, dan
+                            fasilitas pendukung lainnya..</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End fasilitas 1 -->
+
+            <!-- start fasilitas 2 -->
+            <div class="col-md mb-3">
+                <div class="card">
+                    <img
+                        src="{{url_for('static', filename='img/fasilitas5.jpg')}}"
+                        class="card-img-top"
+                        alt="..."
+                        height="300">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Restoran
+                        </h4>
+                        <p class="card-text">Restoran dengan menu lokal dan western buka 24 jam.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End fasilitas 2 -->
+
+            <!-- start fasilitas 3 -->
+            <div class="col-md mb-3">
+                <div class="card">
+                    <img
+                        src="{{url_for('static', filename='img/fasilitas6.jpg')}}"
+                        class="card-img-top"
+                        alt="..."
+                        height="300">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Rooftop
+                        </h4>
+                        <p class="card-text">
+                            rooftop infinity pool dengan luas hingga 20 meter persegi! Suguhan pemandangan
+                            kota yang indah lengkap dengan gedung pencakar langitnya menjadi daya tarik
+                            tersendiri.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End fasilitas 3 -->
+        </div>
+    </div>
+    <!-- end Fasilitas -->
+
+    <!-- Start Booking -->
+    <div class="container" id="booking">
+        <div class="row">
+            <div class="row">
+                <div class="col">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+
+                        {% for message in messages %}
+
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Terima Kasih</strong>
+                                {{ message }}
+                                <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Alamat Hotel -->
+            <div class="col-lg-4">
+                <div class="card text-white bg-secondary">
+                    <div class="card-body">
+                        <div class="card-title">Kontak Kami</div>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h6>My Office</h6>
+                    </li>
+                    <li class="list-group-item">Jl. Yos Sudarso
+                    </li>
+                    <li class="list-group-item">karanganyar</li>
+                    <li class="list-group-item">Phone : 0271 -2564521</li>
+                    <li class="list-group-item">email :budihotelkra@gmail.com</li>
+                </ul>
+            </div>
+            <!-- End Alamat -->
+            <!--
+            ==============================================================================================================
+            -->
+            <!-- Form Boking -->
+
+            <!-- End Boking -->
+        </div>
+
+    </div>
+
+    <!-- End Booking -->
+{% endblock %}

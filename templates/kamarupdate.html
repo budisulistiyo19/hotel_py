@@ -1,0 +1,60 @@
+<div
+    class="modal fade"
+    id="kamarupdate{{ row [0]}}"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update Kamar</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form
+                    action="{{ url_for('kamarupdate') }}"
+                    method="post"
+                    enctype="multipart/form-data">
+                    <div class="mb-3">
+
+                        <label for="exampleFormControlInput1" class="form-label">Nama Kamar</label>
+                        <input
+                            type="input"
+                            class="form-control"
+                            id="nama"
+                            name="nama"
+                            value="{{ row [1] }}"
+                            placeholder="Nama Kamar">
+                            <input type="hidden" id="id" name="id" value="{{ row [0] }}"></div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Harga</label>
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="harga"
+                                    name="harga"
+                                    value="{{ row [2] }}"
+                                    placeholder="Harga Kamar"></div>
+                                <div class="mb-3">
+                                    <label for="Keterangan" class="form-label">Keterangan</label>
+                                    <textarea class="form-control" name="keterangan" id="keterangan" rows="3">{{ row [3] }}</textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Image</label>
+                                    <input class="form-control" type="file" id="gambar" name="gambar"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Update</button>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>

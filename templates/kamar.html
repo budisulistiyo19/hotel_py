@@ -1,0 +1,96 @@
+{% extends "baseadmin.html" %}
+{% include "kamaradd.html" %}
+{% block title %}
+    Kamar
+{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class="container">
+            <a
+                href=""
+                type="button"
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#kamaradd">Tambah Kamar</a >
+        </div>
+        <div class="mb-3>">
+            <div class="col mt-3 text-center">
+                <h3>Data Kamar</h3>
+            </div>
+            <div class="row">
+                <!-- pesan data berubah -->
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for
+                    message in messages %}
+
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Keterangan :</strong>
+                            {{ message }}
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <!-- Akhir pesan data berubah -->
+
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Harga</th>
+                                    <th scope="col">Keterangan</th>
+                                    <th scope="col">gambar</th>
+                                    <th scope="col" style="text-align: center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in datakamar %}
+                                    <tr>
+                                        <th scope="row">{{ loop.index }}</th>
+                                        <td>{{ row [1] }}</td>
+                                        <td>{{ row [2] }}</td>
+                                        <td>{{ row [3] }}</td>
+                                        <td><img src="static/img/{{ row [4] }}" class="w-50"/></td>
+
+                                        <td style="text-align: center;">
+                                            <a
+                                                href=""
+                                                type="button"
+                                                class="btn btn-outline-secondary"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#kamardetail{{ row [0]}}">Detail</a >
+                                            <a
+                                                href=""
+                                                type="button"
+                                                class="btn btn-outline-success"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#kamarupdate{{ row [0]}}">Update</a >
+                                            <a
+                                                href="{{ url_for('kamarhapus', id=row[0])}}"
+                                                type="button"
+                                                class="btn btn-outline-danger"
+                                                onclick="confirm('Anda yakin mengahpus data?');">Delete</a >
+                                        </td>
+                                    </tr>
+
+                                    {% include "kamardetail.html" %}
+                                    {% include "kamarupdate.html" %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+</div>

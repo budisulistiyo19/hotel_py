@@ -1,0 +1,79 @@
+<!-- Modal -->
+<div
+    class="modal fade"
+    id="bookingadd"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Booking Kamar</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/booking" method="POST">
+                    <div class="mb-3">
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">No Handphone</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="phone"
+                                placeholder="Masukkan No Telpon"
+                                autocomplete="off"
+                                name="phone"
+                                required="required"></div>
+                            <div class="mb-3">
+                                <label for="keterangan" class="form-label">Keterangan</label>
+                                <textarea class="form-control" id="keterangan" rows="3" name="keterangan"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="type" class="form-label">Tipe Kamar</label>
+                                <select class="form-select" aria-label="Default select example" name="tipe">
+                                    <option value=""></option>
+                                    <option value="Single Room">Standard Room</option>
+                                    <option value="Superior Room">Superior Room</option>
+                                    <option value="Deluxe Room">Deluxe Room</option>
+                                    <option value="Junior Suite Room">Junior Suite Room</option>
+                                    <option value="Junior Suite Room">Suite Room</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="checkin" class="form-label">Tanggal Check In</label>
+                                <input
+                                    type="date"
+                                    class="form-control"
+                                    id="checkin"
+                                    name="checkin"
+                                    required="required"></div>
+                                <div class="mb-3">
+                                    <label for="checkout" class="form-label">Tanggal Check Out</label>
+                                    <input
+                                        type="date"
+                                        class="form-control"
+                                        id="checkout"
+                                        name="checkout"
+                                        required="required"></div>
+                                    <div class="mb-3">
+                                        <label for="jumlah" class="form-label">Jumlah Kamar</label>
+                                        <input
+                                            type="number"
+                                            class="form-control"
+                                            id="jumlah"
+                                            name="jumlah"
+                                            required="required"></div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Simpan</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
